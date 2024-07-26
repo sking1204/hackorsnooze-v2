@@ -10,6 +10,7 @@ function navAllStories(evt) {
   console.debug("navAllStories", evt);
   hidePageComponents();
   putStoriesOnPage();
+  $storiesContainer.show();
 }
 
 $body.on("click", "#nav-all", navAllStories);
@@ -74,6 +75,7 @@ $navLogin.on("click", navLoginClick);
 function navProfileClick(evt) {
   console.debug("navProfileClick", evt);
   hidePageComponents();
+  $storiesContainer.hide();
   $userProfile.show();
 }
 

@@ -47,8 +47,10 @@ a:hover {
 .stories-container{
   height: calc(100vh - 100px);
   /* Adds scroll if stories overflow page */
-  /* overflow: scroll; */
+  overflow: scroll;
 }
+
+
 
 
 .hidden {

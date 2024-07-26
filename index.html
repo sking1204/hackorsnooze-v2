@@ -25,10 +25,10 @@
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
       crossorigin="anonymous"> -->
   <script src="https://kit.fontawesome.com/09915ff863.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../hackorsnooze-v2/css/site.css">
-  <link rel="stylesheet" href="../hackorsnooze-v2/css/user.css">
-  <link rel="stylesheet" href="../hackorsnooze-v2/css/stories.css">
-  <link rel="stylesheet" href="../hackorsnooze-v2/css/nav.css">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="../css/stories.css">
+  <link rel="stylesheet" href="../css/nav.css">
 </head>
 
 <body>
@@ -58,13 +58,57 @@
   </div>
 </nav>
 
+<!-- Area for stories (all stories, user stories, favorites) -->
+<section id="stories-container" class="stories-container container">
+  <!-- Add Stories Form -->
+  <form action="#" id="add-story-form" class="account-form hidden">
+    <h4>Add Story</h4>
+    <!-- form fields -->
+    <button type="submit">submit</button>
+    <hr>
+  </form>
+  <!-- Lists of stories -->
+  <ol id="all-stories-list" class="stories-list"></ol>
+  <ol id="favorited-stories-list" class="stories-list hidden"></ol>
+  <ol id="user-stories-list" class="stories-list hidden"></ol> 
+
+
+
+</section>
+
+<!-- Login and signup forms -->
+<section class="account-forms-container container">
+  <form action="#" id="login-form" class="account-form hidden" method="post">
+    <h4>Login</h4>
+    <!-- form fields -->
+    <button type="submit">login</button>
+    <hr>
+  </form>
+  <form action="#" id="signup-form" class="account-form hidden" method="post">
+    <h4>Create Account</h4>
+    <!-- form fields -->
+    <button type="submit">create account</button>
+  </form>
+</section>
+
+<!-- User profile -->
+<section class="user-profile-container container">
+<div id="user-profile" class="user-profile-box hidden">
+  <h4>User Profile Info</h4>
+  <section>
+    <div>Name: <span id="profile-name"></span></div>
+    <div>Username: <span id="profile-username"></span></div>
+    <div>Account Created: <span id="profile-account-date"></span></div>
+  </section>
+</div>
+</section>
 
 
 <!-- area for stories (all stories, user stories, favorites) -->
-<section id="stories-container" class="stories-container container">
+<!-- <section id="stories-container" class="stories-container container">
 
   <!-- Add Stories Form -->
-  <form action="#" id="add-story-form" class="account-form hidden">
+  <!-- <form action="#" id="add-story-form" class="account-form hidden">
     <h4>Add Story</h4>
     <div class="author-input">
       <label for="story-author">author</label>
@@ -83,25 +127,25 @@
   </form>
 
   <!-- loading message (removed by JS after stories loaded) -->
-  <div id="stories-loading-msg">Loading&hellip;</div>
+  <!-- <div id="stories-loading-msg">Loading&hellip;</div> -->
 
   <!-- List of all stories -->
-  <ol id="all-stories-list" class="stories-list hidden"></ol>
+  <!-- <ol id="all-stories-list" class="stories-list "></ol> -->
 
   <!-- List of stories favorited by current user -->
-  <ol id="favorited-stories-list" class="stories-list hidden"></ol>
+  <!-- <ol id="favorited-stories-list" class="stories-list hidden"></ol> -->
 
   <!-- List of users' own stories -->
-  <ol id="user-stories-list" class="stories-list"></ol> 
+  <!-- <ol id="user-stories-list" class="stories-list hidden"></ol>  -->
 
 
-</section>
+<!-- </section> -->
 
 <!-- Login and signup forms -->
-<section class="account-forms-container container">
+<!-- <section class="account-forms-container container "> -->
 
   <!-- Login form -->
-  <form action="#" id="login-form" class="account-form hidden" method="post">
+  <!-- <form action="#" id="login-form" class="account-form hidden" method="post">
     <h4>Login</h4>
     <div class="login-input">
       <label for="login-username">username</label>
@@ -113,10 +157,10 @@
     </div>
     <button type="submit">login</button>
     <hr>
-  </form>
+  </form> -->
 
   <!-- Signup form -->
-  <form
+  <!-- <form
       action="#"
       id="signup-form"
       class="account-form hidden"
@@ -136,12 +180,12 @@
     </div>
     <button type="submit">create account</button>
   </form>
-</section>
+</section> -->
 
 <!-- ADDED -->
 <!-- User profile -->
- <section id="user-profile" class="hidden">
-  <div class="user-profile-box">
+<!-- <section class="account-forms-container container " id="user-profile-container">
+  <form action="#" id="user-profile-form" class="account-form">
     <h4>User Profile</h4>
     <section>
       <div>Name: <span id="profile-name"></span></div>
@@ -149,7 +193,20 @@
       <div>Account Created: <span id="profile-account-date"></span></div> 
     </section> 
   </div> 
- </section>
+ </section> --> 
+ <!-- User profile
+
+<section class="user-profile-container container">
+
+  <div id="user-profile" class="hidden">
+    <h4>User Profile Info</h4>
+    <section>
+      <div>Name: <span id="profile-name">Name:</span></div>
+      <div>Username: <span id="profile-username">Username:</span></div>
+      <div>Account Created: <span id="profile-account-date"></span></div>
+    </section>
+  </div>
+</section>
 
 
 <!-- Library JS & our JS -->
