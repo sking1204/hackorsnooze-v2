@@ -97,7 +97,7 @@ function saveUserCredentialsInLocalStorage() {
 }
 
 /******************************************************************************
- * General UI stuff about users
+ * General UI stuff about users & profile
  */
 
 /** When a user signs up or registers, we want to set up the UI for them:
@@ -107,10 +107,34 @@ function saveUserCredentialsInLocalStorage() {
  * - generate the user profile part of the page
  */
 
-function updateUIOnUserLogin() {
+async function updateUIOnUserLogin() {
   console.debug("updateUIOnUserLogin");
 
+  hidePageComponents();
+
+  // re-display stories (so that "favorite" stars can appear)
+  putStoriesOnPage();
   $allStoriesList.show();
 
   updateNavOnLogin();
+  generateUserProfile();   
+  $storiesContainer.show()
 }
+
+/* Show user profile details based on current user */
+
+function generateUserProfile(){
+  console.debug("generateUserProfile", currentUser);
+  if (!currentUser || !currentUser.name || !currentUser.username || !currentUser.createdAt) {
+    console.error("User data is incomplete or missing");
+    return;
+  }
+
+  $("#profile-name").text(currentUser.name);
+  $("#profile-username").text(currentUser.username);
+  $("#profile-account-date").text(currentUser.createdAt.slice(0, 10));
+}
+
+
+
+

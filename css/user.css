@@ -12,3 +12,29 @@
 .account-forms-container {
   padding-left: 20px;
 }
+
+/* ADDED */
+
+/* User profile */
+
+/* .user-profile-box {
+  padding: 10px 20px 20px;
+  font-size: 0.9rem;
+}
+
+.user-profile-box > * {
+  margin: 10px 0;
+} */
+
+.user-profile-box {
+  padding: 10px 20px 20px;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  background-color: #f6f6ef;
+}
+
+.user-profile-box > * {
+  margin: 10px 0;
+}

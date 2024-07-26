@@ -56,6 +56,31 @@ function navFavoritesClick(evt){
 
 $navShowFavorites.on("click", navFavoritesClick);
 
+//NEW 7/25
+/** Show login/signup on click on "login" */
+
+function navLoginClick(evt) {
+  console.debug("navLoginClick", evt);
+  hidePageComponents();
+  $loginForm.show();
+  $signupForm.show();
+  $storiesContainer.hide()
+}
+
+$navLogin.on("click", navLoginClick);
+
+/** Hide everything but profile on click on "profile" */
+
+function navProfileClick(evt) {
+  console.debug("navProfileClick", evt);
+  hidePageComponents();
+  $userProfile.show();
+}
+
+$navUserProfile.on("click", navProfileClick);
+
+//END NEW 7/25
+
 
 /** When a user first logins in, update the navbar to reflect that. */
 

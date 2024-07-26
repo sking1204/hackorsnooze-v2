@@ -8,12 +8,30 @@
   color: gray;
   font-size: 0.8rem;
   margin: 10px 0;
+  /* Added */
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 10px;
 }
+
+
 
 #stories-loading-msg {
   font-weight: bold;
   font-size: 150%;
   margin: 20px 30px;
+}
+
+.star i,
+.trash-icon i{
+  cursor: pointer;
+}
+
+.trash-icon:hover i {
+  color: crimson;
+}
+
+.fa-solid{
+  color: orange;   
 }
 
 
@@ -32,8 +50,16 @@
 
 .story-author {
   margin-left: 2em;
+  /* Added */
+  font-size: 0.85rem;
+  color: green;
+  padding: 6px 0;
 }
 
 .story-user {
   display: block;
+  /* Added */
+  margin-left: 2em;
+  font-size: 0.85rem;
+  color: orangered;
 }

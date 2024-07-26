@@ -25,10 +25,10 @@
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
       crossorigin="anonymous"> -->
   <script src="https://kit.fontawesome.com/09915ff863.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/site.css">
-  <link rel="stylesheet" href="css/user.css">
-  <link rel="stylesheet" href="css/stories.css">
-  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="../hackorsnooze-v2/css/site.css">
+  <link rel="stylesheet" href="../hackorsnooze-v2/css/user.css">
+  <link rel="stylesheet" href="../hackorsnooze-v2/css/stories.css">
+  <link rel="stylesheet" href="../hackorsnooze-v2/css/nav.css">
 </head>
 
 <body>
@@ -37,20 +37,33 @@
 <nav>
   <div class="navbar-brand">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
-  </div>
-  <div class="nav-right">
-    <a class="nav-link" href="#" id="nav-login">login/signup</a> 
-    <a class="nav-link" href="#" id="nav-all">profile</a>   
-    <a class="nav-link" href="#" id="nav-submit-story-form">submit</a>   
-    <a class="nav-link" href="#" id="nav-show-favorites">favorites</a>   
-    <a class="nav-link" href="#" id="nav-show-user-stories-list">my stories</a>   
-    <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
+  </div> 
+  
+    <!-- Added styling for main links that we want to initially hide-->
+     <div class="main-nav-links hidden">
+      |
+      <a class="nav-link" href="#" id="nav-submit-story-form">submit</a> 
+      |  
+      <a class="nav-link" href="#" id="nav-show-favorites">favorites</a>   
+      |
+      <a class="nav-link" href="#" id="nav-show-user-stories-list">my stories</a>        
+     </div>  
+   
+ 
+<!-- Styling for nav links to right of screen -->
+<div class="nav-right">
+  <a class="nav-link" href="#" id="nav-login">login/signup</a> 
+  <a class="nav-link" href="#" id="nav-user-profile">profile</a>
+  <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
 </nav>
 
-<!-- Add Stories Form -->
+
+
 <!-- area for stories (all stories, user stories, favorites) -->
-<section class="stories-container container">
+<section id="stories-container" class="stories-container container">
+
+  <!-- Add Stories Form -->
   <form action="#" id="add-story-form" class="account-form hidden">
     <h4>Add Story</h4>
     <div class="author-input">
@@ -73,14 +86,13 @@
   <div id="stories-loading-msg">Loading&hellip;</div>
 
   <!-- List of all stories -->
-  <ol id="all-stories-list" class="stories-list"></ol>
+  <ol id="all-stories-list" class="stories-list hidden"></ol>
 
   <!-- List of stories favorited by current user -->
-  <ol id="favorited-stories-list" class="stories-list"></ol>
+  <ol id="favorited-stories-list" class="stories-list hidden"></ol>
 
   <!-- List of users' own stories -->
-  <ol id="user-stories-list" class="stories-list"></ol>
-
+  <ol id="user-stories-list" class="stories-list"></ol> 
 
 
 </section>
@@ -125,6 +137,20 @@
     <button type="submit">create account</button>
   </form>
 </section>
+
+<!-- ADDED -->
+<!-- User profile -->
+ <section id="user-profile" class="hidden">
+  <div class="user-profile-box">
+    <h4>User Profile</h4>
+    <section>
+      <div>Name: <span id="profile-name"></span></div>
+      <div>Username: <span id="profile-username"></span></div>
+      <div>Account Created: <span id="profile-account-date"></span></div> 
+    </section> 
+  </div> 
+ </section>
+
 
 <!-- Library JS & our JS -->
 <script src="https://unpkg.com/jquery"></script>

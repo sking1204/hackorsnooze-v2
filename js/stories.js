@@ -19,35 +19,37 @@ async function getAndShowStoriesOnStart() {
  * Returns the markup for the story.
  */
 
-function generateStoryMarkup(story) {
+function generateStoryMarkup(story, isOwnStory = false) {
   // console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
 
   //Adding logic for logged in user to have favorite/unfavorite star displayed next to story
   const showStar = Boolean(currentUser);
+  const showTrash = Boolean(currentUser && isOwnStory)
 
   return $(`
       <li id="${story.storyId}">
 
         <div>
         ${showStar ? getStarHTML(story, currentUser) : ""}
+        ${showTrash ? getDeleteButtonHTML(currentUser) : ""}
 
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
         <small class="story-hostname">(${hostName})</small>
-        <small class="story-author">by ${story.author}</small>
-        <small class="story-user">posted by ${story.username}</small>
+        <small class="story-author">by ${story.author}</small>        
+        <small class="story-user">posted by ${story.username}</small> 
+        
         <div>
       </li>
       
     `);
 }
 
-//Code to add star to page:
-/* code from sb solution */
-/** Make favorite/not-favorite star for story */
+
+/** Generates star fpr favoriting/unfavoriting a story */
 
 function getStarHTML(story, user) {
   const isFavorite = user.isFavorite(story);
@@ -58,6 +60,16 @@ function getStarHTML(story, user) {
       </span>`;
 }
 
+/* Generates a trash icon for deleting a story */
+
+function getDeleteButtonHTML(){
+  return`
+    <span class = "trash-icon">
+      <i class = "fa-regular fa-trash-can"></i>
+      </span>
+  `
+}
+
 
 
 /** Gets list of stories from server, generates their HTML, and puts on page. */
@@ -66,6 +78,7 @@ function putStoriesOnPage() {
   console.debug("putStoriesOnPage");
 
   $allStoriesList.empty();
+  
 
   // loop through all of our stories and generate HTML for them
   for (let story of storyList.stories) {
@@ -101,6 +114,22 @@ async function addNewStory(evt) {
 }
 
 $addStoryForm.on("submit", addNewStory);
+
+/* Handles deleting a story */
+
+async function deleteStory(evt) {
+  console.debug("deleteStory");
+
+  const $closestLi = $(evt.target).closest("li");
+  const storyId = $closestLi.attr("id");
+
+  await storyList.removeStory(currentUser, storyId);
+
+  // re-generate story list
+  await putUserStoriesOnPage();
+}
+
+$userStoriesList.on("click", ".trash-icon", deleteStory);
 
 /* Showing list of users' own stories */
 
@@ -157,14 +186,21 @@ async function toggleFavoriteStory(evt){
   const story = storyList.stories.find(s => s.storyId === storyId);
 
   /* check if item is already favorited */
-  if ($tgt.hasClass("fa-star")){
-    await currentUser.addFavorite(story);
-    $tgt.closest("i").toggleClass("fa-solid")
-    
-  }else{
-    await currentUser.removeFavorite(story);
-    $tgt.closest("i").toggleClass("fa-regular");
+  try {
+    if ($tgt.hasClass("fa-regular")) {
+      await currentUser.addFavorite(story);
+      $tgt.removeClass("fa-regular").addClass("fa-solid");
+    } else {
+      await currentUser.removeFavorite(story);
+      $tgt.removeClass("fa-solid").addClass("fa-regular");
+    }
+  } catch (err) {
+    console.error("Error toggling favorite status:", err);
   } 
 }
 
+// $storiesLists.on("click", ".star", toggleFavoriteStory);
+
 $allStoriesList.on("click", ".star", toggleFavoriteStory);
+$userStoriesList.on("click", ".star", toggleFavoriteStory);
+$favoritedStoriesList.on("click", ".star", toggleFavoriteStory);

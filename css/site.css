@@ -3,6 +3,9 @@
 body {
   font-family: Arimo, sans-serif;
   margin: 8px 7.5vw;
+  height: 100vh;
+  /* background-color: blue; */
+  background: radial-gradient(circle, rgba(230,137,191,0.9556197478991597) 17%, rgba(208,229,247,1) 54%);
 }
 
 h1 {
@@ -39,6 +42,14 @@ a:hover {
   align-self: center;
   background-color: #f6f6ef;
 }
+
+/* Added */
+.stories-container{
+  height: calc(100vh - 100px);
+  /* Adds scroll if stories overflow page */
+  /* overflow: scroll; */
+}
+
 
 .hidden {
   display: none;
